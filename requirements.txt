@@ -1,0 +1,13 @@
+# Versions used for the rerun scripts in code/scripts
+tensorflow==2.21.0
+keras==3.15.1
+scikit-learn==1.9.1
+shap==0.54.1
+lime==0.2.0.1
+statsmodels==0.15.0
+numpy
+pandas
+matplotlib
+joblib
+# The saved Random Forest in results/original_run was pickled with scikit-learn 1.6.1.
+# It loaded correctly on 1.9.1 with a version warning; use 1.6.1 to avoid the warning.

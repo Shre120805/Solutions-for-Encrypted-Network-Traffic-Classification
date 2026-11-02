@@ -1,0 +1,16 @@
+feature,RF,Improved
+duration,0.00539,0.02016
+total_fiat,0.00918,0.01444
+total_biat,0.01039,0.0137
+min_fiat,0.00393,0.01714
+min_biat,0.00637,0.01337
+max_fiat,0.00699,0.0151
+max_biat,0.0052,0.03153
+mean_fiat,0.00845,0.1931
+mean_biat,0.01124,0.20582
+flowPktsPerSecond,0.02683,0.01658
+flowBytesPerSecond,0.02802,0.01794
+min_flowiat,0.01073,0.01241
+max_flowiat,0.01389,0.01308
+mean_flowiat,0.01661,0.02899
+std_flowiat,0.02084,0.02608

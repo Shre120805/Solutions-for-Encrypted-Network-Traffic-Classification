@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite them as below."
+title: "Solutions for Encrypted Network Traffic Classification"
+type: software
+authors:
+  - family-names: Shah
+    given-names: Harshita
+    affiliation: "Dr. Vishwanath Karad MIT World Peace University"
+  - family-names: Singh
+    given-names: Aditi
+    affiliation: "Dr. Vishwanath Karad MIT World Peace University"
+  - family-names: Hiranandani
+    given-names: Vinikesh
+    affiliation: "Dr. Vishwanath Karad MIT World Peace University"
+  - family-names: Mohanty
+    given-names: Shreyansh
+    affiliation: "Dr. Vishwanath Karad MIT World Peace University"
+date-released: 2026-11-02
