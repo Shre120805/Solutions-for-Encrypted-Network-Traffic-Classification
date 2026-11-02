@@ -15,7 +15,7 @@ SHAP and LIME explain the decisions. FGSM, PGD, a transfer attack and a random-n
 
 ## Dataset
 
-ISCX VPN-nonVPN, 15-second time-based flows: 18,758 flows, binary label (VPN or Non-VPN), 15 of 23 features selected by mutual information, stratified 80/10/10 split. The files are in [`data/`](data/); see [`data/README.md`](data/README.md) for the source and citation.
+ISCX VPN-nonVPN, 15-second time-based flows: 18,758 flows, binary label (VPN or Non-VPN), 15 of 23 features selected by mutual information, stratified 80/10/10 split. The 15-second file is in [`data/`](data/); see [`data/README.md`](data/README.md) for the source, citation and the other timeouts.
 
 ## Results
 
@@ -56,7 +56,7 @@ Trees have no input gradient, so the Random Forest was tested separately. Attack
 
 ```
 notebooks/
-  WORKINGMODEL_6.ipynb       Original project notebook, with outputs
+  WORKINGMODEL_6.ipynb       Project notebook on the real dataset
   Rerun_Experiments.ipynb    Colab notebook for the added experiments
 code/scripts/
   common.py                  Data loading and the fixed split
@@ -72,18 +72,14 @@ results/
   original_run/              Models, tables and plots saved by the original notebook
   rerun/                     Added experiment tables, attributions, logs and models
   figures/                   Figures made from those results
-data/                        ISCX VPN-nonVPN time-based flow files and their source
+data/                        ISCX VPN-nonVPN 15-second flow file and its source
 ```
-
-## Important: which notebook cells to use
-
-In `notebooks/WORKINGMODEL_6.ipynb`, **only cells 1 to 26 use the real dataset**, and all reported results come from those cells. **Everything from the heading "Section 1: Environment Setup & Dependencies" onwards (cell 27 when counting from 0) generates synthetic data.** Those cells and their outputs, including 99.45% clean accuracy, 100% VPN accuracy and a 92.1% accuracy drop, are not project results and must not be cited.
 
 ## How to run
 
-**Colab (not yet test-run there):** open `notebooks/Rerun_Experiments.ipynb`, upload the files in `data/` zipped as `ISCX_VPN_nonVPN_real_CSVs.zip` and the contents of `results/original_run` zipped as `Complete_Research_Results.zip`, then choose Runtime > Run all.
+**Colab (not yet test-run there):** open `notebooks/Rerun_Experiments.ipynb`, upload the file in `data/` zipped as `ISCX_VPN_nonVPN_real_CSVs.zip` and the contents of `results/original_run`, with a retrained `random_forest.pkl` added, zipped as `Complete_Research_Results.zip`, then choose Runtime > Run all.
 
-**Locally:**
+**Locally:** first create `random_forest.pkl` as described under Saved Random Forest below, then:
 
 ```bash
 pip install -r requirements.txt
@@ -96,6 +92,10 @@ python code/scripts/make_figures.py
 ```
 
 These scripts overwrite the files in `results/rerun` and `results/figures`. Retrained models vary between machines, so `train_five_seeds.py` may not match the stored numbers exactly. Only open `.pkl` files from sources you trust.
+
+## Saved Random Forest
+
+The saved Random Forest (`random_forest.pkl`, about 30 MB) is not stored in this repository, to keep it small. `code/scripts/verify_saved_models.py`, `attacks_shap_lime.py` and `random_noise_control.py` load it from `results/original_run/`, so retrain it first using the settings in `notebooks/WORKINGMODEL_6.ipynb` and save it there with `joblib`. Their stored outputs in `results/rerun` used the original model. Retraining with the settings in `notebooks/WORKINGMODEL_6.ipynb` gave 91.84% test accuracy on a newer scikit-learn version, against 91.79% for the saved model.
 
 ## Limitations
 
